@@ -1,0 +1,2636 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pane a Tavola · Pães artesanais de fermentação natural em Goiânia</title>
+  <meta name="description" content="Pães artesanais de longa fermentação em Goiânia: pão caseiro, pão italiano, pão de caçador, focaccia, ciabatta, panetone, chocotone e massa de pizza. Encomendas via WhatsApp.">
+  <meta name="author" content="Pane a Tavola">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --cor-fundo: #fdf7ee;
+      --cor-papel: #fffaf3;
+      --cor-marrom-escuro: #4b2e1e;
+      --cor-marrom-claro: #8a5a35;
+      --cor-destaque: #d9a15b;
+      --cor-borda: #e4d3b5;
+      --cor-link: #8a5a35;
+      --radius-card: 14px;
+      --shadow-suave: 0 8px 20px rgba(0, 0, 0, 0.06);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Work Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #fffaf3 0, #f5e4cf 45%, #f0ddc4 100%);
+      color: var(--cor-marrom-escuro);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: var(--cor-link);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(12px);
+      background: linear-gradient(to bottom, rgba(253, 247, 238, 0.96), rgba(253, 247, 238, 0.88));
+      border-bottom: 1px solid rgba(228, 211, 181, 0.7);
+    }
+
+    .header-inner {
+      padding: 0.9rem 0;
+    }
+
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 0;
+      gap: 1.5rem;
+      position: relative;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      flex-shrink: 0;
+    }
+
+    .logo-area img {
+      height: clamp(70px, 9vh, 100px);
+      flex-shrink: 0;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+
+    .logo-title {
+      font-family: "Playfair Display", serif;
+      font-size: 1.35rem;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--cor-marrom-escuro);
+    }
+
+    .logo-subtitle {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #8c6a4a;
+    }
+
+    nav.main-nav {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+    }
+
+    nav.main-nav a {
+      position: relative;
+      padding-bottom: 0.1rem;
+    }
+
+    nav.main-nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 1px;
+      background: var(--cor-marrom-escuro);
+      transition: width 0.2s ease;
+    }
+
+    nav.main-nav a:hover::after {
+      width: 100%;
+    }
+
+    .nav-toggle {
+      display: none;
+      border: 1px solid var(--cor-borda);
+      border-radius: 999px;
+      background: rgba(255, 250, 243, 0.9);
+      padding: 0.45rem 0.7rem;
+      font-size: 0.9rem;
+      cursor: pointer;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .nav-toggle span {
+      display: inline-block;
+      width: 18px;
+      height: 2px;
+      background: var(--cor-marrom-escuro);
+      position: relative;
+    }
+
+    .nav-toggle span::before,
+    .nav-toggle span::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 18px;
+      height: 2px;
+      background: var(--cor-marrom-escuro);
+    }
+
+    .nav-toggle span::before {
+      top: -5px;
+    }
+
+    .nav-toggle span::after {
+      top: 5px;
+    }
+
+    /* HERO */
+
+    .hero {
+      padding: 2.4rem 0 2.6rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .hero-title {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(2rem, 3.1vw, 2.6rem);
+      line-height: 1.1;
+      margin-bottom: 0.9rem;
+      color: var(--cor-marrom-escuro);
+    }
+
+    .hero-subtitle {
+      font-size: 0.98rem;
+      color: #6f533c;
+      margin-bottom: 1.25rem;
+      max-width: 34rem;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .badge {
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(255, 250, 243, 0.9);
+      border: 1px solid rgba(228, 211, 181, 0.9);
+      color: #7f5e3f;
+      white-space: nowrap;
+    }
+
+    .hero-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      padding: 0.65rem 1.4rem;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      font-size: 0.92rem;
+      font-weight: 500;
+      transition: transform 0.08s ease, box-shadow 0.12s ease, background 0.12s ease, color 0.12s ease;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #d9a15b, #c37f49);
+      color: #fef7ec;
+      box-shadow: 0 9px 18px rgba(173, 108, 55, 0.42);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 24px rgba(173, 108, 55, 0.55);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--cor-marrom-escuro);
+      border: 1px solid var(--cor-borda);
+    }
+
+    .btn-outline:hover {
+      background: rgba(255, 250, 243, 0.9);
+    }
+
+    .btn-small {
+      padding: 0.45rem 1rem;
+      font-size: 0.85rem;
+    }
+
+    .hero-note {
+      font-size: 0.9rem;
+      color: #7b5c3d;
+      margin-top: 0.35rem;
+    }
+
+    .hero-note em {
+      font-style: italic;
+    }
+
+    /* CARD RESUMO HERO (AGORA DENTRO DE .hero-side) */
+
+    .hero-card {
+      background: var(--cor-papel);
+      border-radius: 20px;
+      padding: 1.75rem 1.5rem;
+      box-shadow: var(--shadow-suave);
+      border: 1px solid var(--cor-borda);
+    }
+
+    .hero-card h2 {
+      font-size: 1.15rem;
+      margin-bottom: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 700;
+    }
+
+    .hero-card ul {
+      list-style: none;
+      margin: 0 0 0.9rem;
+      padding: 0;
+      font-size: 0.88rem;
+      color: #6a4e35;
+    }
+
+    .hero-card li + li {
+      margin-top: 0.35rem;
+    }
+
+    .hero-card strong {
+      font-weight: 600;
+      color: var(--cor-marrom-escuro);
+    }
+
+    .meta-mini {
+      font-size: 0.82rem;
+      color: #8a6f55;
+    }
+
+    /* SEÇÕES GENÉRICAS */
+
+    section {
+      padding: 2.4rem 0;
+      scroll-margin-top: 80px;
+    }
+
+    section + section {
+      border-top: 1px solid rgba(228, 211, 181, 0.6);
+    }
+
+    .section-title {
+      font-family: "Playfair Display", serif;
+      font-size: 1.6rem;
+      margin-bottom: 0.4rem;
+      color: var(--cor-marrom-escuro);
+    }
+
+    .section-subtitle {
+      font-size: 0.96rem;
+      color: #7a624f;
+      max-width: 36rem;
+      margin-bottom: 1.6rem;
+    }
+
+    /* MANIFESTO / HISTÓRIA */
+
+    .manifesto-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 2.3fr) minmax(0, 2fr);
+      gap: 2.2rem;
+      align-items: flex-start;
+    }
+
+    .manifesto-story p + p {
+      margin-top: 0.8rem;
+    }
+
+    .manifesto-highlight {
+      background: var(--cor-papel);
+      border-radius: var(--radius-card);
+      padding: 1.5rem 1.4rem;
+      box-shadow: var(--shadow-suave);
+      border: 1px solid var(--cor-borda);
+      font-size: 0.94rem;
+      color: #6f533c;
+    }
+
+    .manifesto-highlight strong {
+      font-weight: 600;
+      color: var(--cor-marrom-escuro);
+    }
+
+    .manifesto-highlight em {
+      font-style: italic;
+    }
+
+    /* CARDÁPIO */
+
+    .category-title {
+      font-size: 1.05rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: #8a5a35;
+      margin: 1.8rem 0 0.9rem;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.4rem;
+    }
+
+    .card {
+      background: rgba(255, 250, 243, 0.94);
+      border-radius: var(--radius-card);
+      padding: 1.15rem 1.1rem 1.15rem;
+      box-shadow: var(--shadow-suave);
+      border: 1px solid var(--cor-borda);
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      font-size: 0.92rem;
+      height: 100%;
+    }
+
+    .card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.1rem;
+      font-weight: 600;
+    }
+
+    .card p {
+      margin: 0;
+    }
+
+    .card .price {
+      font-weight: 600;
+      color: var(--cor-marrom-escuro);
+      font-size: 0.96rem;
+    }
+
+    .card .meta {
+      font-size: 0.8rem;
+      color: #8a6f55;
+      margin-top: 0.1rem;
+    }
+
+    .card-actions {
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .qty-control {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      border-radius: 999px;
+      border: 1px solid var(--cor-borda);
+      padding: 0.2rem 0.55rem;
+      font-size: 0.85rem;
+      background: rgba(255, 250, 243, 0.6);
+    }
+
+    .qty-control button {
+      border: none;
+      background: transparent;
+      font-size: 0.9rem;
+      cursor: pointer;
+      padding: 0 0.25rem;
+      color: var(--cor-marrom-escuro);
+    }
+
+    .qty-value {
+      min-width: 1.1rem;
+      text-align: center;
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* FRASES DE MESA */
+
+    .frases-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .frase-item {
+      padding: 1.25rem 1.5rem;
+      border-radius: var(--radius-card);
+      border: 1px dashed rgba(138, 106, 77, 0.45);
+      background: rgba(255, 250, 243, 0.9);
+      font-size: 0.94rem;
+      color: #6f533c;
+      max-width: 40rem;
+    }
+
+    .frase-texto {
+      font-style: italic;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      color: #7a624f;
+      margin-bottom: 0.25rem;
+    }
+
+    .frase-autor {
+      margin-top: 0.5rem;
+      font-size: 0.82rem;
+      font-style: normal;
+      color: #7a624f;
+    }
+
+    /* COMO ENCOMENDAR */
+
+    .como-lista {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.4rem;
+      font-size: 0.92rem;
+    }
+
+    .como-item {
+      background: rgba(255, 250, 243, 0.95);
+      border-radius: var(--radius-card);
+      padding: 1.2rem 1.1rem;
+      border: 1px solid var(--cor-borda);
+      box-shadow: var(--shadow-suave);
+    }
+
+    .como-item strong {
+      display: block;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      margin-bottom: 0.4rem;
+      color: var(--cor-marrom-escuro);
+    }
+
+    /* CONTATO / RODAPÉ */
+
+    .contato-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.6fr);
+      gap: 2rem;
+      align-items: flex-start;
+    }
+
+    .contato-bloco {
+      background: rgba(255, 250, 243, 0.95);
+      border-radius: var(--radius-card);
+      padding: 1.5rem 1.4rem;
+      border: 1px solid var(--cor-borda);
+      box-shadow: var(--shadow-suave);
+      font-size: 0.9rem;
+      color: #6f533c;
+    }
+
+    .contato-bloco h3 {
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      margin-bottom: 0.6rem;
+    }
+
+    .contato-bloco p + p {
+      margin-top: 0.35rem;
+    }
+
+    .contato-bloco a {
+      font-weight: 500;
+    }
+
+    .alergenos {
+      font-size: 0.8rem;
+      color: #8a6f55;
+      margin-top: 0.7rem;
+    }
+
+    footer {
+      padding: 1.4rem 0 2rem;
+      font-size: 0.8rem;
+      color: #7f654b;
+      text-align: center;
+    }
+
+    footer a {
+      color: #7f654b;
+      font-weight: 500;
+    }
+
+    /* CARRINHO FLUTUANTE */
+
+    .cart-panel {
+      position: fixed;
+      bottom: 1.5rem;
+      left: 1.5rem;
+      max-width: 360px;
+      width: 100%;
+      background: var(--cor-papel);
+      border-radius: 18px;
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.18);
+      border: 1px solid var(--cor-borda);
+      padding: 1rem 1.1rem 1rem;
+      font-size: 0.86rem;
+      z-index: 50;
+      transform: translateY(20px);
+      opacity: 0;
+      pointer-events: none;
+      transition: transform 0.18s ease, opacity 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .cart-panel.visible {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .cart-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+    }
+
+    .cart-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--cor-marrom-escuro);
+    }
+
+    .cart-items-count {
+      font-size: 0.78rem;
+      color: #8a6f55;
+    }
+
+    .cart-list {
+      max-height: 180px;
+      overflow-y: auto;
+      padding-right: 0.1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.35rem 0;
+      border-bottom: 1px dashed rgba(228, 211, 181, 0.7);
+    }
+
+    .cart-item:last-child {
+      border-bottom: none;
+    }
+
+    .cart-item-name {
+      font-weight: 500;
+      font-size: 0.86rem;
+    }
+
+    .cart-item-subtotal {
+      font-weight: 600;
+      font-size: 0.84rem;
+      white-space: nowrap;
+    }
+
+    .cart-item-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: 0.15rem;
+      font-size: 0.8rem;
+    }
+
+    .cart-item-remove {
+      border: none;
+      background: none;
+      color: #b3744a;
+      cursor: pointer;
+      font-size: 0.78rem;
+      padding: 0;
+    }
+
+    .cart-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      margin-top: 0.4rem;
+    }
+
+    .cart-total-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+
+    .cart-total-label {
+      font-size: 0.8rem;
+      color: #8a6f55;
+    }
+
+    .cart-total-value {
+      font-weight: 600;
+      font-size: 0.92rem;
+    }
+
+    .cart-actions-row {
+      display: flex;
+      gap: 0.4rem;
+    }
+
+    .cart-mini-btn {
+      border-radius: 999px;
+      border: 1px solid var(--cor-borda);
+      padding: 0.3rem 0.75rem;
+      font-size: 0.78rem;
+      background: rgba(255, 250, 243, 0.95);
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .cart-mini-btn-primary {
+      border-color: transparent;
+      background: linear-gradient(135deg, #d9a15b, #c37f49);
+      color: #fef7ec;
+    }
+
+    .cart-empty {
+      font-size: 0.82rem;
+      color: #8a6f55;
+      padding: 0.2rem 0 0.5rem;
+    }
+
+    .cart-header-main {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .cart-close {
+      border: none;
+      background: none;
+      cursor: pointer;
+      font-size: 1rem;
+      padding: 0;
+      color: #8a6f55;
+    }
+
+    .cart-highlight {
+      box-shadow: 0 18px 40px rgba(173, 108, 55, 0.6);
+    }
+
+    /* CHECKOUT OVERLAY & ESTILOS NOVOS */
+    .checkout-overlay {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(75, 46, 30, 0.6);
+      backdrop-filter: blur(4px);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    .checkout-modal {
+      background: #fffaf3;
+      width: 100%;
+      max-width: 420px;
+      border-radius: 20px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      max-height: 90vh;
+      border: 1px solid #e4d3b5;
+    }
+
+    .checkout-header {
+      padding: 1rem 1.2rem;
+      background: #fdf7ee;
+      border-bottom: 1px solid #e4d3b5;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .checkout-close {
+      background: none; border: none; font-size: 1.5rem; color: #8a5a35; cursor: pointer;
+    }
+
+    /* Branding no Modal de Checkout (NOVO) */
+    .checkout-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+
+    .checkout-logo {
+      height: 36px;
+      width: auto;
+    }
+
+    .checkout-brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.2;
+    }
+
+    .checkout-brand-name {
+      font-family: "Playfair Display", serif;
+      font-size: 1rem;
+      color: #4b2e1e;
+      font-weight: 600;
+    }
+
+    .checkout-brand-tagline {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #8a6f55;
+    }
+
+    #checkout-form {
+      padding: 1.2rem;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    /* Frase da Mesa no topo */
+    .checkout-hero-phrase {
+      background: #fffefc;
+      border: 1px dashed var(--cor-destaque);
+      border-radius: 12px;
+      padding: 1rem 1.2rem;
+      margin-bottom: 0.5rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .checkout-hero-phrase p {
+      font-family: "Playfair Display", serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--cor-marrom-escuro);
+      margin-bottom: 0.5rem;
+      line-height: 1.4;
+    }
+
+    .checkout-hero-phrase small {
+      display: block;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #8a6f55;
+    }
+
+    /* Resumo simples */
+    .checkout-summary {
+      font-size: 0.9rem;
+      color: #6f533c;
+      background: rgba(228, 211, 181, 0.2);
+      padding: 0.6rem 0.8rem;
+      border-radius: 8px;
+      text-align: center;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      border: 1px solid rgba(228, 211, 181, 0.5);
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .form-group label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #4b2e1e;
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="tel"],
+    .form-group textarea,
+    .form-group select {
+      padding: 0.6rem;
+      border: 1px solid #dcdcdc;
+      border-radius: 8px;
+      font-family: "Work Sans", sans-serif;
+      font-size: 0.9rem;
+      background: #fff;
+    }
+
+    .radio-group {
+      display: flex;
+      gap: 1rem;
+      font-size: 0.9rem;
+    }
+    
+    .checkout-hint {
+      font-size: 0.78rem;
+      color: #8a6f55;
+      margin-top: 0.3rem;
+      line-height: 1.35;
+    }
+
+    .checkout-actions {
+      margin-top: 0.5rem;
+      display: flex;
+      gap: 0.8rem;
+    }
+
+    .btn-checkout-cancel {
+      flex: 1;
+      background: transparent;
+      border: 1px solid #8a5a35;
+      color: #8a5a35;
+      border-radius: 999px;
+      padding: 0.7rem;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .btn-checkout-confirm {
+      flex: 2;
+      background: linear-gradient(135deg, #d9a15b, #c37f49);
+      color: #fff;
+      border: none;
+      border-radius: 999px;
+      padding: 0.7rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      box-shadow: 0 4px 12px rgba(217, 161, 91, 0.4);
+    }
+
+    /* BOTÃO FIXO WHATSAPP */
+
+    .whatsapp-fixo {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      z-index: 45;
+    }
+
+    .whatsapp-fixo a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #25d366;
+      color: #fff;
+      padding: 0.6rem 1.1rem;
+      border-radius: 999px;
+      font-size: 0.86rem;
+      box-shadow: 0 10px 18px rgba(0, 0, 0, 0.18);
+      font-weight: 500;
+    }
+
+    .whatsapp-fixo a:hover {
+      text-decoration: none;
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.24);
+      transform: translateY(-1px);
+    }
+
+    /* BLOG / CURSOS (SEEDS) */
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.2rem;
+    }
+
+    .mini-card-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .mini-card-meta {
+      font-size: 0.8rem;
+      color: #8a6f55;
+      margin-top: 0.35rem;
+    }
+
+    /* HERO COM IMAGEM */
+    .hero-side {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .hero-image-wrapper {
+      position: relative;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 24px 45px rgba(0, 0, 0, 0.18);
+      background: radial-gradient(circle at top, #fff7eb 0, #dec5a3 60%, #c1a185 100%);
+      min-height: 260px;
+    }
+
+    .hero-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.05);
+      display: block;
+    }
+
+    .hero-tag {
+      position: absolute;
+      bottom: 1rem;
+      left: 1rem;
+      background: rgba(29, 18, 11, 0.78);
+      color: #fdf3e3;
+      padding: 0.55rem 0.85rem;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .hero-tag span {
+      font-weight: 600;
+    }
+
+    /* CARDS DE PRODUTO COM FOTO */
+    .card.card-produto {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      padding: 1rem 1rem 1.2rem;
+    }
+
+    .card.card-produto .produto-media {
+      border-radius: 16px;
+      overflow: hidden;
+      height: 165px;
+      background: radial-gradient(circle at top, #fff7eb 0, #e2c7a5 60%, #c1a185 100%);
+      margin-bottom: 0.35rem;
+    }
+
+    .card.card-produto .produto-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* NOVAS SEÇÕES - RECEITAS, HISTÓRIA, PRESENTES, GALERIA */
+
+    .historia-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1.8fr);
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .historia-texto p + p {
+      margin-top: 0.8rem;
+    }
+
+    .frase-mesa {
+      margin-top: 1.2rem;
+      padding: 1rem 1.2rem;
+      background: rgba(255, 250, 243, 0.9);
+      border-left: 3px solid var(--cor-destaque);
+      border-radius: var(--radius-card);
+      font-style: italic;
+    }
+
+    .historia-imagem img {
+      border-radius: 20px;
+      box-shadow: var(--shadow-suave);
+    }
+
+    .card-receita {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .card-receita .card-imagem {
+      border-radius: 16px;
+      overflow: hidden;
+      height: 180px;
+      background: radial-gradient(circle at top, #fff7eb 0, #e2c7a5 60%, #c1a185 100%);
+    }
+
+    .card-receita .card-imagem img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .card-receita .card-conteudo h3 {
+      margin-bottom: 0.5rem;
+    }
+
+    .card-receita .card-conteudo p + p {
+      margin-top: 0.5rem;
+    }
+
+    .card-nota {
+      font-size: 0.82rem;
+      color: #8a6f55;
+      font-style: italic;
+    }
+
+    .presentes-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.8fr) minmax(0, 2fr);
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .presentes-imagem img {
+      border-radius: 20px;
+      box-shadow: var(--shadow-suave);
+    }
+
+    .presentes-texto p + p {
+      margin-top: 0.8rem;
+    }
+
+    .presentes-cta {
+      margin-top: 1rem;
+      padding: 0.9rem 1.2rem;
+      background: rgba(217, 161, 91, 0.12);
+      border-radius: var(--radius-card);
+      font-weight: 500;
+    }
+
+    .card-galeria {
+      background: rgba(255, 250, 243, 0.94);
+      border-radius: var(--radius-card);
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .card-galeria img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .card-galeria figcaption {
+      padding: 0.9rem 1rem;
+      font-size: 0.88rem;
+      color: #6f533c;
+      text-align: center;
+    }
+
+    /* RESPONSIVO */
+
+    @media (max-width: 1024px) {
+      .cards-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .como-lista {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .mini-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 840px) {
+      .hero-grid,
+      .manifesto-grid,
+      .contato-grid,
+      .historia-grid,
+      .presentes-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-side {
+        order: -1;
+        margin-bottom: 1.25rem;
+      }
+
+      .nav-toggle {
+        display: inline-flex;
+      }
+
+      nav.main-nav {
+        position: absolute;
+        top: calc(100% + 0.4rem);
+        right: 0;
+        background: rgba(255, 250, 243, 0.98);
+        border-radius: 18px;
+        padding: 0.6rem 0.8rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.3rem;
+        min-width: 180px;
+        display: none;
+      }
+
+      nav.main-nav.open {
+        display: flex;
+      }
+
+      nav.main-nav a {
+        padding: 0.35rem 0.6rem;
+      }
+
+      .whatsapp-fixo {
+        right: 1rem;
+        bottom: 1rem;
+      }
+
+      .cart-panel {
+        left: 1rem;
+        right: 1rem;
+        max-width: none;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .cards-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .como-lista {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .mini-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .card.card-produto .produto-media {
+        height: 150px;
+      }
+
+      .card-receita .card-imagem {
+        height: 160px;
+      }
+
+      .card-galeria img {
+        height: 200px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .header-content {
+        gap: 0.9rem;
+      }
+
+      .logo-title {
+        font-size: 1.1rem;
+      }
+
+      .hero {
+        padding-top: 1.6rem;
+      }
+
+      .cart-panel {
+        bottom: 1rem;
+      }
+    }
+
+  </style>
+</head>
+<body><a href="https://paneatavola.com.br/cdn-cgi/content?id=QzY7zCF58meANk5doPxdoPXVTmFrHPWMvWPdUSHEDrU-1764010613.9529288-1.0.1.1-UCSUoj9149Rv1kjIR0Yc4WC3wqK0jPxvSZbgS23VNPw" aria-hidden="true" rel="nofollow noopener" style="display: none !important; visibility: hidden !important"></a>
+
+  <div class="whatsapp-fixo">
+    <a href="https://wa.me/5562998822023?text=Olá,%20gostaria%20de%20fazer%20uma%20encomenda%20de%20pães%20artesanais."
+      target="_blank" 
+      rel="noopener noreferrer"
+      aria-label="Abrir WhatsApp da Pane a Tavola para encomendas">
+      <span>🍞</span> Falar com a <em>Pane a Tavola</em>
+    </a>
+  </div>
+
+  <aside class="cart-panel" id="cart-panel">
+    <div class="cart-header">
+      <div class="cart-header-main">
+        <div class="cart-title">Resumo do pedido</div>
+        <div class="cart-items-count"><span id="cart-items-count">0</span> itens</div>
+      </div>
+      <button class="cart-close" aria-label="Fechar resumo" type="button">&times;</button>
+    </div>
+    <div class="cart-list" id="cart-items"></div>
+    <div class="cart-empty" id="cart-empty">Seu pedido ainda está vazio. Comece escolhendo um pão.</div>
+    <div class="cart-footer">
+      <div class="cart-total-row" id="cart-total-row">
+        <div class="cart-total-label">Total aproximado</div>
+        <div class="cart-total-value" id="cart-total">R$ 0,00</div>
+      </div>
+      <div class="cart-actions-row">
+        <button class="cart-mini-btn" id="cart-clear" type="button">Limpar</button>
+        <button class="cart-mini-btn cart-mini-btn-primary" id="cart-checkout" type="button">
+          Fazer pedido
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <header>
+    <div class="container header-inner">
+      <div class="header-content">
+        <div class="logo-area">
+          <img src="img/logo-pane-a-tavola.svg" alt="Logo Pane a Tavola">
+          <div class="logo-text">
+            <div class="logo-title"><em>Pane a Tavola</em></div>
+            <div class="logo-subtitle">O pão que une gerações</div>
+          </div>
+        </div>
+
+        <button class="nav-toggle" id="nav-toggle" type="button" aria-label="Abrir menu">
+          <span></span>
+        </button>
+
+        <nav class="main-nav" id="main-nav">
+          <a href="#inicio">Início</a>
+          <a href="#cardapio">Cardápio</a>
+          <a href="#manifesto">História</a>
+          <a href="#frases">Frases de mesa</a>
+          <a href="#como-encomendar">Como encomendar</a>
+          <a href="#contato">Contato</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="inicio" class="hero">
+      <div class="container hero-grid">
+        <div>
+          <h1 class="hero-title">Pães artesanais de longa fermentação em Goiânia.</h1>
+          <p class="hero-subtitle">
+            Pães entre 600g e 700g, feitos com levain próprio da casa, fermentação natural mínima de 12 horas,
+            assados em pequenas fornadas e embalados um a um. É na mesa que construímos relações para uma vida toda.
+          </p>
+
+          <div class="hero-badges">
+            <span class="badge">Fermentação natural · 12h+</span>
+            <span class="badge">Encomendas com 48h de antecedência</span>
+            <span class="badge">Retirada no Setor Bueno</span>
+            <span class="badge">Entrega em Goiânia</span>
+          </div>
+
+          <div class="hero-cta-row">
+            <a href="#cardapio" class="btn btn-primary">
+              🍽️ Escolher pães e montar pedido
+            </a>
+            <a href="#cardapio" class="btn btn-outline">Ver cardápio completo</a>
+          </div>
+
+          <p class="hero-note">
+            Segunda a sábado, das 8h às 18h · Fornadas diárias do pão caseiro <em>Pane a Tavola</em> para retirada.
+          </p>
+        </div>
+
+        <aside class="hero-side">
+          <div class="hero-image-wrapper">
+            <img src="img/cesta-paes.png" alt="Cesta de pães artesanais da Pane a Tavola">
+            <div class="hero-tag">
+              <span>Fornada da semana</span>
+              ·
+              <span>Goiânia</span>
+            </div>
+          </div>
+          <div class="hero-card">
+            <h2>Encomendas · Goiânia</h2>
+            <ul>
+              <li><strong>Prazo de encomenda:</strong> 48 horas para todos os pães.</li>
+              <li><strong>Fornadas diárias:</strong> pão caseiro <em>Pane a Tavola</em> para retirada agendada.</li>
+              <li><strong>Retirada:</strong> Av. T1, 962 · Apto 902 · Cond. Solar Bueno · Setor Bueno.</li>
+            </ul>
+            <p class="meta-mini">
+              Entrega grátis nos bairros Marista, Bueno, Jardim América, Setor Oeste e Coimbra.
+              Para demais regiões de Goiânia, consultar taxa pelo WhatsApp.
+            </p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="manifesto">
+      <div class="container">
+        <h2 class="section-title">O pão que une gerações.</h2>
+        <p class="section-subtitle">
+          A <em>Pane a Tavola</em> nasce de memórias de forno à lenha, mesa cheia e família reunida — agora em versão artesanal,
+          com fermentação natural e tempo respeitado.
+        </p>
+
+        <div class="manifesto-grid">
+          <div class="manifesto-story">
+            <p>
+              Antes de existir a marca, existia um forno construído pelo avô. Ele acendia a lenha, preparava o calor,
+              e a cozinha virava sala de espera da família inteira. Para acertar a temperatura, vinha o teste da palha:
+              a avó jogava a palha de milho no forno. Se enrolasse e queimasse rápido demais, ainda estava quente demais.
+              Se ficasse amarelinha e fosse "dançando" devagar, era o sinal: o forno estava pronto para receber o pão.
+            </p>
+            <p>
+              A massa era sovada em conjunto, entre conversas e risadas. Alguém ia buscar os ovos no galinheiro,
+              outro ajeitava a mesa, e o cheiro do pão assando marcava o momento em que todo mundo se encontrava.
+              Essa memória afetiva — do forno, da folha de bananeira, da casa cheia — é a referência de pão que levamos
+              para cada fornada de hoje.
+            </p>
+            <p>
+              A <em>Pane a Tavola</em> é isso: um pão de fermentação natural, de longa fermentação, feito com calma,
+              para famílias que valorizam a mesa posta, pessoas que fogem do pão industrializado e amantes do levain.
+              Um pão que convida a desacelerar e voltar às raízes.
+            </p>
+          </div>
+
+          <aside class="manifesto-highlight">
+            <p>
+              <strong>Para quem é a Pane a Tavola?</strong>
+            </p>
+            <p>
+              Para famílias que gostam de sentar à mesa, arrumar uma toalha bonita, abrir a manteiga, o azeite e repartir o pão.
+            </p>
+            <p>
+              Para quem quer fugir do pão industrializado e busca um pão de fermentação natural, com ingredientes simples,
+              tempo respeitado e sabor de casa de avó.
+            </p>
+            <p>
+              Para quem ama histórias: do forno à lenha, da palha de milho, do avô que construiu o forno, da avó que testava
+              a temperatura e da família inteira que esperava o momento de tirar o pão do forno.
+            </p>
+            <p>
+              Aqui, o pão não é só alimento: é memória, encontro e afeto embalados um a um.
+            </p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="cardapio">
+      <div class="container">
+        <h2 class="section-title">Cardápio de pães artesanais</h2>
+        <p class="section-subtitle">
+          Todos os pães são preparados sob encomenda com fermentação natural de longa duração
+          (mínimo de 12h), em peças entre 600g e 700g. O pão caseiro <em>Pane a Tavola</em> possui fornadas diárias
+          para retirada.
+        </p>
+
+        <h3 class="category-title">Pães da casa</h3>
+        <div class="cards-grid">
+          <article class="card card-produto">
+            <div class="produto-media">
+              <img src="img/pao-caseiro-memorias.jpg" alt="Pão caseiro Pane a Tavola na mesa posta">
+            </div>
+            <h3>Pão caseiro <em>Pane a Tavola</em></h3>
+            <p class="price">R$ 20,00</p>
+            <p>
+              Nosso pão do dia: casca fina e dourada, miolo macio, sabor leve de fermentação natural.
+              Ideal para acompanhar café da manhã e lanche da tarde.
+            </p>
+            <p class="meta">Fornadas diárias para retirada agendada no Setor Bueno.</p>
+            <div class="card-actions">
+              <div class="qty-control" data-product-id="pao-caseiro">
+                <button class="qty-btn" type="button" data-action="dec">–</button>
+                <span class="qty-value">1</span>
+                <button class="qty-btn" type="button" data-action="inc">+</button>
+              </div>
+              <button
+                class="btn btn-small btn-primary btn-add-cart"
+                type="button"
+                data-product-id="pao-caseiro"
+                data-name="Pão caseiro Pane a Tavola"
+                data-price="20.00"
+              >
+                Adicionar ao carrinho
+              </button>
+            </div>
+          </article>
+
+          <article class="card card-produto">
+            <div class="produto-media">
+              <img src="img/pao-de-chocolate.jpg" alt="Pão artesanal com pedaços de chocolate">
+            </div>
+            <h3>Pão com chocolate</h3>
+            <p class="price">R$ 35,00</p>
+            <p>
+              Massa de longa fermentação com pedaços de chocolate, perfeita para quem gosta de um toque doce
+              sem abrir mão de um pão de verdade.
+            </p>
+            <p class="meta">Sugestão para café da tarde em família.</p>
+            <div class="card-actions">
+              <div class="qty-control" data-product-id="pao-com-chocolate">
+                <button class="qty-btn" type="button" data-action="dec">–</button>
+                <span class="qty-value">1</span>
+                <button class="qty-btn" type="button" data-action="inc">+</button>
+              </div>
+              <button
+                class="btn btn-small btn-primary btn-add-cart"
+                type="button"
+                data-product-id="pao-com-chocolate"
+                data-name="Pão com chocolate"
+                data-price="35.00"
+              >
+                Adicionar ao carrinho
+              </button>
+            </div>
+          </article>
+
+          <article class="card card-produto">
+            <div class="produto-media">
+              <img src="img/pao-italiano-lindo.webp" alt="Pão italiano de fermentação natural">
+            </div>
+            <h3>Pão italiano tradicional</h3>
+            <p class="price">R$ 30,00</p>
+            <p>
+              Crosta mais marcada, miolo úmido e cheio de alvéolos, inspirado nos clássicos pães de mesa italianos.
+            </p>
+            <p class="meta">Perfeito para acompanhar azeite, antepastos, queijos e vinhos.</p>
+            <div class="card-actions">
+              <div class="qty-control" data-product-id="pao-italiano">
+                <button class="qty-btn" type="button" data-action="dec">–</button>
+                <span class="qty-value">1</span>
+                <button class="qty-btn" type="button" data-action="inc">+</button>
+              </div>
+              <button
+                class="btn btn-small btn-primary btn-add-cart"
+                type="button"
+                data-product-id="pao-italiano"
+                data-name="Pão italiano tradicional"
+                data-price="30.00"
+              >
+                Adicionar ao carrinho
+              </button>
+            </div>
+          </article>
+        </div>
+
+        <h3 class="category-title">Pães especiais</h3>
+        <div class="cards-grid">
+          <article class="card card-produto">
+            <div class="produto-media">
+              <img src="img/pao-do-cacador.jpg" alt="Pão de caçador artesanal, casca firme e miolo úmido">
+            </div>
+            <h3>Pão de caçador</h3>
+            <p class="price">R$ 40,00</p>
+            <p>
+              Pão rústico, de casca firme e sabor intenso, pensado para refeições de forno e panelas de ferro.
+            </p>
+            <p class="meta">Ideal para acompanhar ensopados, carnes de longa cocção e mesas mais fartas.</p>
+            <div class="card-actions">
+              <div class="qty-control" data-product-id="pao-cacador">
+                <button class="qty-btn" type="button" data-action="dec">–</button>
+                <span class="qty-value">1</span>
+                <button class="qty-btn" type="button" data-action="inc">+</button>
+              </div>
+              <button
+                class="btn btn-small btn-primary btn-add-cart"
+                type="button"
+                data-product-id="pao-cacador"
+                data-name="Pão de caçador"
+                data-price="40.00"
+              >
+                Adicionar ao carrinho
+              </button>
+            </div>
+          </article>
+
+          <article class="card card-produto">
+            <div class="produto-media">
+              <img src="img/pao-filao.jpg" alt="Pães filão de fermentação natural, perfeitos para fatiar e compartilhar">
+            </div>
+            <h3>Pães filão</h3>
+            <p class="price">R$ 20,00</p>
+            <p>
+              Filões de fermentação natural, com casca mais fina e formato alongado, pensados para fatiar e compartilhar.
+            </p>
+            <p class="meta">Ótimos para sanduíches, bruschettas e mesas de antepastos.</p>
+            <div class="card-actions">
+              <div class="qty-control" data-product-id="paes-filao">
+                <button class="qty-btn" type="button" data-action="dec">–</button>
+                <span class="qty-value">1</span>
+                <button class="qty-btn" type="button" data-action="inc">+</button>
+              </div>
+              <button
+                class="btn btn-small btn-primary btn-add-cart"
+                type="button"
+                data-product-id="paes-filao"
+                data-name="Pães filão"
+                data-price="20.00"
+              >
+                Adicionar ao carrinho
+              </button>
+            </div>
+          </article>
+
+          <article class="card card-produto">
+            <div class="produto-media">
+              <img src="img/pao-do-campo.jpg" alt="Pão do campo artesanal, casca crocante e miolo úmido">
+            </div>
+            <h3>Pão do campo</h3>
+            <p class="price">R$ 30,00</p>
+            <p>
+              Pão rústico com sabor de interior: casca crocante, miolo úmido e aromático,
+              lembrando os pães de forno à lenha do passado.
+            </p>
+            <p class="meta">Ótimo para acompanhar manteiga, geleias e caldos.</p>
+            <div class="card-actions">
+              <div class="qty-control" data-product-id="pao-do-campo">
+                <button class="qty-btn" type="button" data-action="dec">–</button>
+                <span class="qty-value">1</span>
+                <button class="qty-btn" type="button" data-action="inc">+</button>
+              </div>
+              <button
+                class="btn btn-small btn-primary btn-add-cart"
+                type="button"
+                data-product-id="pao-do-campo"
+                data-name="Pão do campo"
+                data-price="30.00"
+              >
+                Adicionar ao carrinho
+              </button>
+            </div>
+          </article>
+
+          <article class="card card-produto">
+            <div class="produto-media">
+              <img src="img/pao-saloio.jpg" alt="Pão Saloio artesanal, casca marcada e miolo úmido">
+            </div>
+            <h3>Pão Saloio</h3>
+            <p class="price">R$ 40,00</p>
+            <p>
+              Pão de inspiração portuguesa, casca bem marcada e miolo úmido, para quem gosta de um pão mais robusto
+              e com presença à mesa.
+            </p>
+            <p class="meta">Combina com pratos mais gordurosos, queijos e azeites intensos.</p>
+            <div class="card-actions">
+              <div class="qty-control" data-product-id="pao-saloio">
+                <button class="qty-btn" type="button" data-action="dec">–</button>
+                <span class="qty-value">1</span>
+                <button class="qty-btn" type="button" data-action="inc">+</button>
+              </div>
+              <button
+                class="btn btn-small btn-primary btn-add-cart"
+                type="button"
+                data-product-id="pao-saloio"
+                data-name="Pão Saloio"
+                data-price="40.00"
+              >
+                Adicionar ao carrinho
+              </button>
+            </div>
+          </article>
+
+          <article class="card card-produto">
+            <h3>Focaccia</h3>
+            <p class="price">R$ 35,00</p>
+            <p>
+              Massa alta, macia e bem hidratada, com azeite generoso e cobertura que pode incluir ervas, sal grosso
+              e outros ingredientes sob consulta.
+            </p>
+            <p class="meta">Perfeita para entradas, tábuas e encontros informais.</p>
+            <div class="card-actions">
+              <div class="qty-control" data-product-id="focaccia">
+                <button class="qty-btn" type="button" data-action="dec">–</button>
+                <span class="qty-value">1</span>
+                <button class="qty-btn" type="button" data-action="inc">+</button>
+              </div>
+              <button
+                class="btn btn-small btn-primary btn-add-cart"
+                type="button"
+                data-product-id="focaccia"
+                data-name="Focaccia"
+                data-price="35.00"
+              >
+                Adicionar ao carrinho
+              </button>
+            </div>
+          </article>
+
+          <article class="card card-produto">
+            <div class="produto-media">
+              <img src="img/pao-ciabatta.jpg" alt="Pão ciabatta de fermentação natural">
+            </div>
+            <h3>Ciabatta</h3>
+            <p class="price">R$ 12,00</p>
+            <p>
+              Pão individual de casca fina e miolo bem alveolado, com textura leve e sabor marcante de fermentação natural.
+            </p>
+            <p class="meta">Ótimo para sanduíches, bruschettas e lanches rápidos.</p>
+            <div class="card-actions">
+              <div class="qty-control" data-product-id="ciabatta">
+                <button class="qty-btn" type="button" data-action="dec">–</button>
+                <span class="qty-value">1</span>
+                <button class="qty-btn" type="button" data-action="inc">+</button>
+              </div>
+              <button
+                class="btn btn-small btn-primary btn-add-cart"
+                type="button"
+                data-product-id="ciabatta"
+                data-name="Ciabatta"
+                data-price="12.00"
+              >
+                Adicionar ao carrinho
+              </button>
+            </div>
+          </article>
+
+          <article class="card card-produto">
+            <div class="produto-media">
+              <img src="img/massa-pizza-artesanal.jpg" alt="Massa de pizza artesanal fresca de fermentação natural">
+            </div>
+            <h3>Massa de pizza fresca</h3>
+            <p class="price">R$ 25,00</p>
+            <p>
+              Massa de pizza de fermentação natural, preparada com calma para você abrir em casa
+              e levar direto ao forno.
+            </p>
+            <p class="meta">Sugestão para noites de pizza em família.</p>
+            <div class="card-actions">
+              <div class="qty-control" data-product-id="massa-pizza">
+                <button class="qty-btn" type="button" data-action="dec">–</button>
+                <span class="qty-value">1</span>
+                <button class="qty-btn" type="button" data-action="inc">+</button>
+              </div>
+              <button
+                class="btn btn-small btn-primary btn-add-cart"
+                type="button"
+                data-product-id="massa-pizza"
+                data-name="Massa de pizza fresca"
+                data-price="25.00"
+              >
+                Adicionar ao carrinho
+              </button>
+            </div>
+          </article>
+        </div>
+
+        <h3 class="category-title">Presentes & celebrações</h3>
+        <div class="cards-grid">
+          <article class="card card-produto">
+            <div class="produto-media">
+              <img src="img/panetone-frutas-cristalizadas.jpg" alt="Panetone artesanal com pedaços de frutas secas cristalizadas">
+            </div>
+
+            <h3>Panetone artesanal</h3>
+            <p class="price">R$ 60,00</p>
+            <p>
+              Massa de longa fermentação, leve e aromática, com frutas cristalizadas selecionadas.
+              Ideal para presentear em datas especiais.
+            </p>
+            <p class="meta">Opção com embalagem de presente disponível.</p>
+            <div class="card-actions">
+              <div class="qty-control" data-product-id="panetone">
+                <button class="qty-btn" type="button" data-action="dec">–</button>
+                <span class="qty-value">1</span>
+                <button class="qty-btn" type="button" data-action="inc">+</button>
+              </div>
+              <button
+                class="btn btn-small btn-primary btn-add-cart"
+                type="button"
+                data-product-id="panetone"
+                data-name="Panetone artesanal"
+                data-price="60.00"
+              >
+                Adicionar ao carrinho
+              </button>
+            </div>
+          </article>
+
+          <article class="card card-produto">
+            <div class="produto-media">
+              <img src="img/chocotone-tradicional-chocolate-meio-amargo.jpg" alt="Chocotone artesanal com pedaços de chocolate meio-amargo ou chocolate ao leite">
+            </div>
+            <h3>Chocotone artesanal</h3>
+            <p class="price">R$ 70,00</p>
+            <p>
+              Versão com chocolate de qualidade, mantendo a textura leve da massa de fermentação natural.
+            </p>
+            <p class="meta">Sugestão de presente para quem ama chocolate.</p>
+            <div class="card-actions">
+              <div class="qty-control" data-product-id="chocotone">
+                <button class="qty-btn" type="button" data-action="dec">–</button>
+                <span class="qty-value">1</span>
+                <button class="qty-btn" type="button" data-action="inc">+</button>
+              </div>
+              <button
+                class="btn btn-small btn-primary btn-add-cart"
+                type="button"
+                data-product-id="chocotone"
+                data-name="Chocotone artesanal"
+                data-price="70.00"
+              >
+                Adicionar ao carrinho
+              </button>
+            </div>
+          </article>
+
+          <article class="card card-produto">
+            <div class="produto-media">
+              <img src="img/pao-para-presentear.jpg" alt="Pão artesanal embalado para presentear alguém querido">
+            </div>
+            <h3>Embalagem de presente</h3>
+            <p class="price">sob consulta</p>
+            <p>
+              Embalagens personalizadas de alto padrão para presentear pessoas queridas, com acabamento
+              cuidadoso e visual rústico sofisticado.
+            </p>
+            <p class="meta">Informe no pedido que o pão será para presente.</p>
+            <div class="card-actions">
+              <div class="qty-control" data-product-id="embalagem-presente">
+                <button class="qty-btn" type="button" data-action="dec">–</button>
+                <span class="qty-value">1</span>
+                <button class="qty-btn" type="button" data-action="inc">+</button>
+              </div>
+              <button
+                class="btn btn-small btn-primary btn-add-cart"
+                type="button"
+                data-product-id="embalagem-presente"
+                data-name="Embalagem de presente (valor sob consulta)"
+                data-price="0.00"
+              >
+                Adicionar ao carrinho
+              </button>
+            </div>
+          </article>
+        </div>
+
+        <h3 class="category-title">Adicionais & personalizações</h3>
+        <div class="cards-grid">
+          <article class="card card-produto">
+            <h3>Frutas cristalizadas & castanhas</h3>
+            <p class="price">+ R$ 15,00</p>
+            <p>
+              Personalize seu pão adicionando frutas cristalizadas ou castanhas selecionadas (castanha-do-pará,
+              castanha de caju, nozes).
+            </p>
+            <p class="meta">
+              Informe no WhatsApp qual pão deseja personalizar e quais adicionais gostaria de incluir.
+            </p>
+            <div class="card-actions">
+              <div class="qty-control" data-product-id="adicionais-castanhas">
+                <button class="qty-btn" type="button" data-action="dec">–</button>
+                <span class="qty-value">1</span>
+                <button class="qty-btn" type="button" data-action="inc">+</button>
+              </div>
+              <button
+                class="btn btn-small btn-primary btn-add-cart"
+                type="button"
+                data-product-id="adicionais-castanhas"
+                data-name="Adicionais de frutas cristalizadas ou castanhas"
+                data-price="15.00"
+              >
+                Adicionar ao carrinho
+              </button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="frases">
+      <div class="container">
+        <h2 class="section-title">Frases para a mesa.</h2>
+        <p class="section-subtitle">
+          Um espaço para registrar pensamentos, bênçãos e frases que combinam com a mesa posta, o pão quentinho
+          e as conversas que ficam para a vida toda.
+        </p>
+
+        <div class="frases-list">
+          <article class="frase-item">
+            <p class="frase-texto">"É na mesa que o pão vira história e a conversa vira memória."</p>
+            <p class="frase-autor">Frase da casa · <em>Pane a Tavola</em></p>
+          </article>
+
+          <article class="frase-item">
+            <p class="frase-texto">
+              "Algumas famílias se encontram nos compromissos. As nossas, a gente convida para encontrar em volta do pão."
+            </p>
+            <p class="frase-autor">Frase da casa · mesa, pão e afeto</p>
+          </article>
+
+          <article class="frase-item">
+            <p class="frase-texto">
+              "Pães de longa fermentação lembram que o tempo é ingrediente. Na vida e na mesa, o que apressa demais, perde o sabor."
+            </p>
+            <p class="frase-autor">Frase da casa · tempo e fermento</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="receitas">
+      <div class="container">
+        <h2 class="section-title">Receitas & bastidores da <em>Pane a Tavola</em></h2>
+        <p class="section-subtitle">
+          Um pouco do que acontece antes do pão chegar quentinho à sua mesa.
+        </p>
+
+        <div class="cards-grid">
+          <article class="card card-receita">
+            <div class="card-imagem">
+              <img src="img/massa-pizza-artesanal.jpg" alt="Massa de pizza artesanal fresca sendo preparada">
+            </div>
+            <div class="card-conteudo">
+              <h3>Massa de pizza artesanal</h3>
+              <p>
+                Nossa massa de pizza é feita com a mesma filosofia dos pães:
+                fermentação natural, tempo, paciência e respeito aos ingredientes.
+              </p>
+              <p class="card-nota">
+                Em breve, receitas e cursos para você reproduzir essa experiência em casa.
+              </p>
+            </div>
+          </article>
+
+          <article class="card card-receita">
+            <div class="card-imagem">
+              <img src="img/preparacao-para-pao-chocolate.jpg" alt="Preparação de pão de chocolate artesanal">
+            </div>
+            <div class="card-conteudo">
+              <h3>Bastidores do pão com chocolate</h3>
+              <p>
+                Antes de virar aquele miolo macio com pedaços generosos de chocolate,
+                o pão passa por horas de descanso e dobras suaves.
+              </p>
+              <p class="card-nota">
+                Um pão pensado para momentos de pausa, café passado na hora
+                e conversa sem pressa.
+              </p>
+            </div>
+          </article>
+
+          <article class="card card-receita">
+            <div class="card-imagem">
+              <img src="img/pao-caseiro-50-integral.jpg" alt="Pão caseiro 50% integral de fermentação natural">
+            </div>
+            <div class="card-conteudo">
+              <h3>Pão caseiro 50% integral</h3>
+              <p>
+                Uma variação do nosso pão caseiro, para quem quer equilíbrio entre maciez
+                e mais fibras no dia a dia, sem abrir mão da fermentação natural.
+              </p>
+              <p class="card-nota">
+                Em breve, esse pão poderá entrar como opção fixa no cardápio.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="historia">
+      <div class="container">
+        <div class="historia-grid">
+          <div class="historia-texto">
+            <h2 class="section-title">O pão que une gerações</h2>
+            <p>
+              A referência de pão na nossa família começa no forno construído pelo meu avô.
+              Ele acendia a lenha, aquecia o forno, minha avó testava a temperatura
+              com a palha de milho e só então os pães entravam, sobre folhas de bananeira.
+            </p>
+            <p>
+              Era um ritual: sovar a massa juntos, sentir o cheiro do forno,
+              buscar um ovo no galinheiro para completar a receita.
+              Esse pão não é só alimento – é memória, conversa e afeto.
+            </p>
+            <p class="frase-mesa">
+              <strong>"É na mesa que construímos relações para uma vida toda."</strong>
+            </p>
+          </div>
+
+          <div class="historia-imagem">
+            <img src="img/pao-para-mesa-posta.jpg" alt="Pães artesanais servidos em mesa posta, prontos para compartilhar em família">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="presentes">
+      <div class="container">
+        <div class="presentes-grid">
+          <div class="presentes-imagem">
+            <img src="img/pao-presente.png" alt="Pão artesanal embalado para presente em embalagem de alto padrão">
+          </div>
+          <div class="presentes-texto">
+            <h2 class="section-title">Presentear com pão é presentear presença</h2>
+            <p>
+              Você pode transformar qualquer um dos nossos pães em um presente de alto padrão,
+              com embalagem especial para pessoas queridas.
+            </p>
+            <p>
+              Ideal para aniversários, visitas, agradecimentos e aquele "eu lembrei de você"
+              que chega em forma de pão ainda perfumando a casa.
+            </p>
+            <p class="presentes-cta">
+              Nos peça uma embalagem personalizada ao fazer seu pedido pelo WhatsApp.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="galeria-italiano">
+      <div class="container">
+        <h2 class="section-title">O italiano em três momentos</h2>
+        <p class="section-subtitle">
+          Casca firme, miolo úmido e aquela presença de mesa que só um bom pão italiano tem.
+        </p>
+
+        <div class="cards-grid">
+          <figure class="card card-galeria">
+            <img src="img/pao-italiano-4.jpg" alt="Pão italiano inteiro de fermentação natural">
+            <figcaption>Pão italiano inteiro, pronto para a mesa.</figcaption>
+          </figure>
+
+          <figure class="card card-galeria">
+            <img src="img/pao-italiano-cortado.png" alt="Pão italiano cortado em fatias">
+            <figcaption>Fatiado, ele acompanha queijos, vinhos e conversas longas.</figcaption>
+          </figure>
+
+          <figure class="card card-galeria">
+            <img src="img/pao-italiano-decorado.png" alt="Pão italiano decorado, pronto para servir">
+            <figcaption>Decorado, vira centro de mesa em qualquer ocasião.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="como-encomendar">
+      <div class="container">
+        <h2 class="section-title">Como encomendar seu pão.</h2>
+        <p class="section-subtitle">
+          O processo é simples: você escolhe os pães, monta o carrinho, revisa os detalhes no painel de confirmação
+          e finaliza a encomenda pelo WhatsApp.
+        </p>
+
+        <div class="como-lista">
+          <article class="como-item">
+            <strong>1 · Escolha os pães</strong>
+            <p>
+              Navegue pelo cardápio, leia as descrições e pense no momento em que o pão será servido:
+              café da manhã, almoço em família, presente ou celebração.
+            </p>
+          </article>
+
+          <article class="como-item">
+            <strong>2 · Monte o carrinho</strong>
+            <p>
+              Use o botão "Adicionar ao carrinho" em cada produto. Você pode ajustar quantidades, remover itens
+              e limpar tudo quando quiser no resumo flutuante.
+            </p>
+          </article>
+
+          <article class="como-item">
+            <strong>3 · Confirme no WhatsApp</strong>
+            <p>
+              Ao clicar em "Fazer pedido", você revisa seus dados no painel de confirmação e, em seguida,
+              o pedido é aberto já formatado no WhatsApp para revisão final.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contato">
+      <div class="container">
+        <h2 class="section-title">Contato & encomendas.</h2>
+        <p class="section-subtitle">
+          Toda produção é feita sob encomenda, em pequena escala, com fermentação natural e levain próprio da casa.
+        </p>
+
+        <div class="contato-grid">
+          <div class="contato-bloco">
+            <h3>Encomendas em Goiânia</h3>
+            <p><strong>WhatsApp da casa:</strong> <a href="https://wa.me/5562998822023" target="_blank" rel="noopener noreferrer">(62) 99882-2023</a></p>
+            <p><strong>Prazo para encomenda:</strong> mínimo de 48h para todos os pães.</p>
+            <p><strong>Pão caseiro <em>Pane a Tavola</em>:</strong> fornadas diárias de segunda a sábado, das 8h às 18h, para retirada agendada.</p>
+            <p><strong>Retirada:</strong> Av. T1, 962 · Apto 902 · Cond. Solar Bueno · Setor Bueno · Goiânia/GO.</p>
+            <p><strong>Entrega grátis:</strong> Marista, Bueno, Jardim América, Setor Oeste e Coimbra.</p>
+            <p><strong>Demais bairros:</strong> consultar taxa de entrega pelo WhatsApp.</p>
+
+            <p class="alergenos">
+              <strong>Alergênicos:</strong> nossos pães podem conter glúten, ovos, leite, castanhas, nozes e derivados.
+              Não são veganos, pois utilizamos mel e não utilizamos aditivos químicos.
+            </p>
+          </div>
+
+          <div class="contato-bloco">
+            <h3>Instagram & novidades</h3>
+            <p>
+              Acompanhe o dia a dia da produção, fornadas especiais, sabores sazonais e histórias de mesa no Instagram:
+            </p>
+            <p>
+              <a href="https://instagram.com/paneatavola" target="_blank" rel="noopener noreferrer">@paneatavola</a>
+            </p>
+            <p class="mini-card-meta">
+              Em breve, este espaço também terá receitas, dicas de mesa posta e agenda de cursos presenciais e experiências
+              de pão & mesa.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>
+        <em>Pane a Tavola</em> · Goiânia/GO · Pães artesanais de fermentação natural, feitos em pequena escala,
+        com tempo respeitado e memória afetiva em cada fornada.
+      </p>
+    </div>
+  </footer>
+
+  <div id="checkout-overlay" class="checkout-overlay" style="display: none;">
+    <div class="checkout-modal">
+      <div class="checkout-header">
+        <div class="checkout-brand">
+          <img src="img/logo-pane-a-tavola.svg" alt="Logo Pane a Tavola" class="checkout-logo">
+          <div class="checkout-brand-text">
+            <span class="checkout-brand-name"><em>Pane a Tavola</em></span>
+            <span class="checkout-brand-tagline">Finalizar Pedido</span>
+          </div>
+        </div>
+        <button type="button" class="checkout-close" id="checkout-close">&times;</button>
+      </div>
+      
+      <form id="checkout-form">
+        <div class="checkout-hero-phrase">
+          <p id="checkout-frase">Carregando frase...</p>
+          <small>Pane a Tavola · pães de fermentação natural</small>
+        </div>
+
+        <div class="checkout-summary" id="checkout-summary-display">
+          Resumo do pedido...
+        </div>
+
+        <div class="form-group">
+          <label for="cx-nome">Seu nome *</label>
+          <input type="text" id="cx-nome" name="customer_name" required placeholder="Como gosta de ser chamado?">
+        </div>
+
+        <div class="form-group">
+          <label for="cx-phone">Telefone (WhatsApp) *</label>
+          <input type="tel" id="cx-phone" name="customer_phone" required placeholder="(62) 99999-9999">
+        </div>
+
+        <div class="form-group">
+          <label>Forma de entrega *</label>
+          <div class="radio-group">
+            <label><input type="radio" name="delivery_method" value="retirada" checked> Retirada (Bueno)</label>
+            <label><input type="radio" name="delivery_method" value="entrega"> Entrega (Verificar taxa)</label>
+          </div>
+        </div>
+
+        <div class="form-group" id="address-group" style="display:none;">
+          <label for="cx-address">Endereço completo</label>
+          <textarea id="cx-address" name="customer_address" rows="2" placeholder="Rua, Número, Quadra, Lote, Bairro..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="cx-notes">Observações / Personalizações</label>
+          <textarea id="cx-notes" name="notes" rows="2" placeholder="Ex: Adicionar castanhas no pão caseiro..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Forma de pagamento preferida</label>
+          <select name="payment_method">
+            <option value="pix">Pix (Chave enviada no Zap)</option>
+            <option value="dinheiro">Dinheiro</option>
+            <option value="cartao_debito">Cartão de Débito</option>
+            <option value="cartao_credito">Cartão de Crédito</option>
+          </select>
+          <p class="checkout-hint">
+            A forma de pagamento pode ser combinada novamente na conversa, mas isso nos ajuda a nos organizar para te atender melhor.
+            Se for cartão, levamos a maquininha.
+          </p>
+        </div>
+
+        <div class="checkout-actions">
+          <button type="button" class="btn-checkout-cancel" id="checkout-cancel">Voltar</button>
+          <button type="submit" class="btn-checkout-confirm">
+            Confirmar e abrir WhatsApp <span>💬</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Pane a Tavola · tracking leve · v0.1.1 · 22/11/2025 08:xx PM BRT
+
+    const frasesDaCasa = [
+      'A mesa posta é a forma mais simples de dizer: "você é bem-vindo aqui".',
+      'Pão partido, conversa estendida: é assim que a família se encontra.',
+      'Pães de longa fermentação lembram que o tempo é ingrediente, não obstáculo.',
+      'Mesa cheia, coração aquecido e pão quentinho: combinação de casa viva.',
+      'O pão divide a mesa, mas multiplica os encontros.'
+    ];
+
+    function getSessionId() {
+      const key = 'pane_session_id';
+      let id = localStorage.getItem(key);
+      if (!id) {
+        id = 'sess-' + Math.random().toString(36).slice(2) + Date.now().toString(36);
+        localStorage.setItem(key, id);
+      }
+      return id;
+    }
+
+    function trackEvent(type, productSlug, extra) {
+      try {
+        const payload = {
+          type,
+          productSlug: productSlug || null,
+          pagePath: location.pathname + location.hash,
+          sessionId: getSessionId(),
+          extra: extra || null
+        };
+
+        const blob = new Blob([JSON.stringify(payload)], { type: 'application/json' });
+        navigator.sendBeacon('/api/track', blob);
+      } catch (_) {
+        // tracking nunca pode quebrar o site
+      }
+    }
+
+    // MENU MOBILE
+    const navToggle = document.getElementById('nav-toggle');
+    const mainNav = document.getElementById('main-nav');
+
+    if (navToggle && mainNav) {
+      navToggle.addEventListener('click', () => {
+        mainNav.classList.toggle('open');
+      });
+
+      mainNav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          mainNav.classList.remove('open');
+        });
+      });
+    }
+
+    // Lógica do carrinho
+    const cartPanel = document.getElementById('cart-panel');
+    const cartItemsContainer = document.getElementById('cart-items');
+    const cartItemsCount = document.getElementById('cart-items-count');
+    const cartTotalEl = document.getElementById('cart-total');
+    const cartEmptyEl = document.getElementById('cart-empty');
+    const cartTotalRow = document.getElementById('cart-total-row');
+    const cartClearBtn = document.getElementById('cart-clear');
+    const cartCheckoutBtn = document.getElementById('cart-checkout');
+    const cartCloseBtn = document.querySelector('.cart-close');
+
+    const cart = {}; // { id: { name, price, qty } }
+
+    function formatCurrency(value) {
+      return value.toLocaleString('pt-BR', {
+        style: 'currency',
+        currency: 'BRL'
+      });
+    }
+
+    function updateCartUI() {
+      const ids = Object.keys(cart);
+      cartItemsContainer.innerHTML = '';
+      let total = 0;
+      let totalItens = 0;
+
+      if (ids.length === 0) {
+        cartEmptyEl.style.display = 'block';
+        cartTotalRow.style.display = 'none';
+        cartItemsCount.textContent = '0';
+        cartTotalEl.textContent = 'R$ 0,00';
+        return;
+      }
+
+      cartEmptyEl.style.display = 'none';
+      cartTotalRow.style.display = 'flex';
+
+      ids.forEach(id => {
+        const item = cart[id];
+        const subtotal = item.price * item.qty;
+        total += subtotal;
+        totalItens += item.qty;
+
+        const div = document.createElement('div');
+        div.className = 'cart-item';
+        div.dataset.productId = id;
+        div.innerHTML = `
+          <div>
+            <div class="cart-item-name">${item.name}</div>
+            <div class="cart-item-controls">
+              <div class="qty-control" data-product-id="${id}">
+                <button class="qty-btn" type="button" data-action="dec">–</button>
+                <span class="qty-value">${item.qty}</span>
+                <button class="qty-btn" type="button" data-action="inc">+</button>
+              </div>
+              <button class="cart-item-remove" type="button">remover</button>
+            </div>
+          </div>
+          <div class="cart-item-subtotal">${formatCurrency(subtotal)}</div>
+        `;
+        cartItemsContainer.appendChild(div);
+      });
+
+      cartItemsCount.textContent = String(totalItens);
+      cartTotalEl.textContent = formatCurrency(total);
+    }
+
+    function showCartPanel() {
+      cartPanel.classList.add('visible', 'cart-highlight');
+      setTimeout(() => cartPanel.classList.remove('cart-highlight'), 400);
+    }
+
+    function addToCart(productId, name, price, qty) {
+      if (!cart[productId]) {
+        cart[productId] = { id: productId, name, price, qty };
+      } else {
+        cart[productId].qty += 1;
+      }
+      updateCartUI();
+      showCartPanel();
+    }
+
+    // Botões "Adicionar ao carrinho"
+    document.querySelectorAll('.btn-add-cart').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const productId = btn.dataset.productId;
+        const name = btn.dataset.name;
+        const price = parseFloat(btn.dataset.price || '0');
+        const qtyControl = document.querySelector(
+          `.qty-control[data-product-id="${productId}"] .qty-value`
+        );
+        const qty = parseInt(qtyControl ? qtyControl.textContent : '1', 10) || 1;
+
+        addToCart(productId, name, price, qty);
+
+        trackEvent('add_to_cart', productId, {
+          name,
+          unit_price_cents: Math.round(price * 100),
+          qty
+        });
+      });
+    });
+
+    // Controle de quantidade nos cards
+    document.querySelectorAll('.qty-control').forEach(control => {
+      control.addEventListener('click', event => {
+        const btn = event.target.closest('.qty-btn');
+        if (!btn) return;
+
+        const action = btn.dataset.action;
+        const valueEl = control.querySelector('.qty-value');
+        let current = parseInt(valueEl.textContent || '1', 10) || 1;
+
+        if (action === 'inc') current += 1;
+        if (action === 'dec') current = Math.max(1, current - 1);
+
+        valueEl.textContent = String(current);
+      });
+    });
+
+    // Eventos dentro do carrinho
+    cartItemsContainer.addEventListener('click', event => {
+      const btn = event.target.closest('button');
+      if (!btn) return;
+
+      const cartItemRow = event.target.closest('.cart-item');
+      if (!cartItemRow) return;
+
+      const productId = cartItemRow.dataset.productId;
+      if (!productId || !cart[productId]) return;
+
+      if (btn.classList.contains('cart-item-remove')) {
+        const item = cart[productId];
+        delete cart[productId];
+        updateCartUI();
+        if (item) {
+          trackEvent('remove_from_cart', productId, {
+            name: item.name,
+            qty: item.qty,
+            unit_price_cents: Math.round(item.price * 100)
+          });
+        }
+        return;
+      }
+
+      const qtyControl = cartItemRow.querySelector('.qty-control');
+      if (!qtyControl) return;
+      const valueEl = qtyControl.querySelector('.qty-value');
+
+      let current = parseInt(valueEl.textContent || '1', 10) || 1;
+      const action = btn.dataset.action;
+
+      if (action === 'inc') current += 1;
+      if (action === 'dec') current = Math.max(1, current - 1);
+
+      cart[productId].qty = current;
+      updateCartUI();
+    });
+
+    // Botão limpar carrinho
+    cartClearBtn.addEventListener('click', () => {
+      Object.keys(cart).forEach(id => delete cart[id]);
+      updateCartUI();
+    });
+
+    // Fechar painel
+    cartCloseBtn.addEventListener('click', () => {
+      cartPanel.classList.remove('visible');
+    });
+
+    // ====== CHECKOUT COM MODAL + SNAPSHOT NO D1 + WHATSAPP ======
+    const checkoutOverlay = document.getElementById('checkout-overlay');
+    const checkoutClose   = document.getElementById('checkout-close');
+    const checkoutCancel  = document.getElementById('checkout-cancel');
+    const checkoutForm    = document.getElementById('checkout-form');
+    const addressGroup    = document.getElementById('address-group');
+    const deliveryRadios  = document.querySelectorAll('input[name="delivery_method"]');
+    const summaryDisplay  = document.getElementById('checkout-summary-display');
+
+    function openCheckoutModal() {
+      if (checkoutOverlay) {
+        // Frase da mesa aleatória
+        const fraseEl = document.getElementById('checkout-frase');
+        if (fraseEl && Array.isArray(frasesDaCasa) && frasesDaCasa.length > 0) {
+          const frase = frasesDaCasa[Math.floor(Math.random() * frasesDaCasa.length)];
+          fraseEl.textContent = '"' + frase.replace(/"/g, '') + '"';
+        }
+
+        // Atualizar resumo do pedido no topo do modal
+        const itemsArray = Object.values(cart);
+        const total = itemsArray.reduce((acc, item) => acc + item.price * item.qty, 0);
+        const totalQty = itemsArray.reduce((acc, item) => acc + item.qty, 0);
+        
+        if (summaryDisplay) {
+            summaryDisplay.textContent = `Resumo do pedido: ${totalQty} ${totalQty === 1 ? 'item' : 'itens'} · Total ${formatCurrency(total)}`;
+        }
+
+        checkoutOverlay.style.display = 'flex';
+      }
+    }
+
+    function closeCheckoutModal() {
+      if (checkoutOverlay) {
+        checkoutOverlay.style.display = 'none';
+      }
+    }
+
+    function generateCartHash(items) {
+      const raw = items
+        .map(it => `${it.name}:${it.qty}:${it.price}`)
+        .sort()
+        .join('|');
+      let hash = 0;
+      for (let i = 0; i < raw.length; i++) {
+        hash = (hash * 31 + raw.charCodeAt(i)) >>> 0;
+      }
+      return hash.toString(16);
+    }
+
+    function isCheckoutCoolingDown() {
+      const last = Number(localStorage.getItem('pane_last_checkout_ts') || '0');
+      return Date.now() - last < 60_000;
+    }
+
+    function startCheckoutCooldown() {
+      localStorage.setItem('pane_last_checkout_ts', String(Date.now()));
+    }
+
+    async function sendCheckoutSnapshot(itemsArray, total, totalQty, extra) {
+      try {
+        const sessionId = getSessionId();
+        const cartHash = generateCartHash(itemsArray);
+        const payload = {
+          session_id: sessionId,
+          cart_hash: cartHash,
+          items: itemsArray.map(item => ({
+            product_id: item.id || item.name,
+            name: item.name,
+            qty: item.qty,
+            unit_price_cents: Math.round(item.price * 100)
+          })),
+          extra: {
+            total_cents: Math.round(total * 100),
+            total_qty: totalQty,
+            ...extra
+          }
+        };
+
+        const res = await fetch('/api/checkout', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        await res.json().catch(() => ({}));
+      } catch (err) {
+        console.error('Falha ao registrar checkout', err);
+      }
+    }
+
+    cartCheckoutBtn.addEventListener('click', () => {
+      const ids = Object.keys(cart);
+      if (ids.length === 0) {
+        alert('Seu pedido ainda está vazio. Escolha ao menos um pão para prosseguir.');
+        return;
+      }
+      openCheckoutModal();
+    });
+
+    if (checkoutClose) {
+      checkoutClose.addEventListener('click', closeCheckoutModal);
+    }
+    if (checkoutCancel) {
+      checkoutCancel.addEventListener('click', closeCheckoutModal);
+    }
+    if (checkoutOverlay) {
+      checkoutOverlay.addEventListener('click', (ev) => {
+        if (ev.target === checkoutOverlay) {
+          closeCheckoutModal();
+        }
+      });
+    }
+
+    deliveryRadios.forEach(radio => {
+      radio.addEventListener('change', () => {
+        if (radio.checked && radio.value === 'entrega') {
+          addressGroup.style.display = 'block';
+        } else if (radio.checked && radio.value === 'retirada') {
+          addressGroup.style.display = 'none';
+        }
+      });
+    });
+
+    checkoutForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      const ids = Object.keys(cart);
+      if (ids.length === 0) {
+        alert('Seu carrinho está vazio.');
+        closeCheckoutModal();
+        return;
+      }
+
+      if (isCheckoutCoolingDown()) {
+        alert('Pedido já enviado. Aguarde um instante antes de reenviar.');
+        return;
+      }
+
+      const formData = new FormData(checkoutForm);
+      const nome   = (formData.get('customer_name') || '').toString().trim();
+      const phone  = (formData.get('customer_phone') || '').toString().trim();
+      const notes  = (formData.get('notes') || '').toString().trim();
+      const deliv  = (formData.get('delivery_method') || 'retirada').toString();
+      const addr   = (formData.get('customer_address') || '').toString().trim();
+      const payRaw = (formData.get('payment_method') || 'pix').toString();
+      
+      // Traduzir chave interna de pagamento para texto legível
+      let payLabel = payRaw;
+      if (payRaw === 'cartao_debito') payLabel = 'Cartão de Débito';
+      else if (payRaw === 'cartao_credito') payLabel = 'Cartão de Crédito';
+      else if (payRaw === 'pix') payLabel = 'Pix';
+      else if (payRaw === 'dinheiro') payLabel = 'Dinheiro';
+
+      if (!nome || !phone) {
+        alert('Por favor, preencha nome e telefone (WhatsApp).');
+        return;
+      }
+
+      if (deliv === 'entrega' && !addr) {
+        alert('Informe o endereço completo para entrega.');
+        return;
+      }
+
+      const itemsArray = Object.values(cart);
+      const total = itemsArray.reduce((acc, item) => acc + item.price * item.qty, 0);
+      const totalQty = itemsArray.reduce((acc, item) => acc + item.qty, 0);
+
+      let texto = `Ola, meu nome é ${nome}.\n`;
+      texto += 'Gostaria de fazer um pedido da _Pane a Tavola_:\n\n';
+
+      itemsArray.forEach(item => {
+        const subtotal = item.price * item.qty;
+        texto += `- ${item.qty}x ${item.name} - ${formatCurrency(subtotal)}\n`;
+      });
+
+      texto += `\nTotal aproximado: *${formatCurrency(total)}*\n`;
+      texto += `\nForma de entrega: ${
+        deliv === 'retirada'
+          ? 'Retirada (Setor Bueno)'
+          : 'Entrega em: ' + addr
+      }\n`;
+      texto += `Forma de pagamento: ${payLabel}\n`;
+      texto += `Telefone de contato: ${phone}\n`;
+
+      if (notes) {
+        texto += `\nObservacoes:\n${notes}\n`;
+      }
+
+      startCheckoutCooldown();
+
+      await sendCheckoutSnapshot(itemsArray, total, totalQty, {
+        customer_name: nome,
+        customer_phone: phone,
+        delivery_method: deliv,
+        payment_method: payRaw,
+        notes: notes,
+        customer_address: addr          
+      });
+
+      const url = `https://wa.me/5562998822023?text=${encodeURIComponent(texto)}`;
+
+      trackEvent('open_whatsapp', null, {
+        total_cents: Math.round(total * 100),
+        total_qty: totalQty,
+        distinct_items: itemsArray.length
+      });
+
+      window.open(url, '_blank');
+      Object.keys(cart).forEach(id => delete cart[id]);
+      updateCartUI();
+      closeCheckoutModal();
+    });
+  </script>
+
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"f00c94b0942a49db9f9137f02ad4e378","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a3b21013a19ca90',t:'MTc2NDAxMDYxMw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+
+</body>
+</html>

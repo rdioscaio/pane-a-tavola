@@ -1,0 +1,8 @@
+name = "paneatavola"
+compatibility_date = "2025-11-21"
+pages_build_output_dir = "."
+
+[[d1_databases]]
+binding = "PANE_DB"                       # mesmo nome usado no código (env.PANE_DB)
+database_name = "paneatavola-crm"         # nome que aparece no painel do D1
+database_id = "f7fdcc32-707d-417d-9ddf-de0b200474d0"  # UUID que está no seu print
